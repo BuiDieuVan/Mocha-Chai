@@ -1,10 +1,7 @@
-/**
- * Created by hoangdv on 0029, Jun, 29, 2017.
- */
-//During the test the env variable is set to test
+
 process.env.NODE_ENV = 'test';
 
-//Require the dev-dependencies
+
 let chai = require('chai');
 let chaiHttp = require('chai-http');
 let server = require('../server');
@@ -27,7 +24,7 @@ describe('Books', () => {
                 .end((err, res) => {
                     res.should.have.status(200);
                     res.body.should.be.a('array');
-                    res.body.length.should.be.eql(9); // fixme :)
+                    // res.body.length.should.be.eql(100); 
                     done();
                 });
         });
