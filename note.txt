@@ -1,0 +1,17 @@
+//mocha 
+what
+- khung kiểm tra đơn giản 
+why 
+-test code
+how:
+
+
+
+
+// NYC
+what: check đã cover hết các dòng trong file code hay chưa 
+
+why: nhờ đó biết đoạn code nào đó quên chưa test
+
+// CHAI
+expect & should

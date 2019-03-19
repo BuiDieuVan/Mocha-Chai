@@ -8,7 +8,7 @@ let bodyParser = require('body-parser');
 let port = process.env.PORT || 8080;
 let book = require('./routes/book');
 
-//don't show the log when it is test
+
 if(process.env.NODE_ENV !== 'test') {
     //use morgan to log at command line
     app.use(morgan('combined')); //'combined' outputs the Apache style LOGs
@@ -33,4 +33,4 @@ app.route("/books/:id")
 app.listen(port);
 console.log("Listening on port " + port);
 
-module.exports = app; // for testing
+module.exports = app;
