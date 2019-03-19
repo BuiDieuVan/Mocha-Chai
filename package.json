@@ -7,15 +7,17 @@
     "test": "test"
   },
   "dependencies": {
-    "chai": "^4.2.0",
-    "chai-http": "^4.2.1",
+    "config": "^3.0.1",
     "express": "^4.16.4",
-    "mocha": "^6.0.2",
+    "mongoose": "^5.4.19",
     "morgan": "^1.9.1",
     "nodemon": "^1.18.10"
   },
   "devDependencies": {
-    "coveralls": "^3.0.3"
+    "chai": "^4.2.0",
+    "chai-http": "^4.2.1",
+    "coveralls": "^3.0.3",
+    "mocha": "^6.0.2"
   },
   "scripts": {
     "test": "mocha --timeout 10000",
