@@ -1,91 +1,84 @@
-const Book = require('../model/book.js')
-/**
- * GET
+
+let Book = require("../model/book");
+
+/*
+ * GET /books route to retrieve all the books.
  */
-const getBooks = (req, res) => {
+let getBooks = (req, res) => {
     Book.find((err, books) => {
         if (err) {
-            return res.send(err);
+            res.send(err); // :D
+            return;
         }
-        res.send(books)
+        res.send(books);
     });
 };
-/** POST */
 
-// const postBook = (req, res) => {
-//     Book.save(book, (err, newBook) => {
-//         let book = req.body;
-//         if( err){
-//             res.send(err);
-//             return;
-//         }
-//             res.send({
-//                 massage:'Books succes added',
-//                 Book: newBook
-//             });
-//     });
-// };
-const postBook = (req,res) =>{
-    req.checkBody('id','id cannot empty').notEmpty();
-    req.checkBody('name','name cannot be empty').notEmpty();
-    req.checkBody('status','status avaiable').notEmpty();
+/*
+ * POST /books to save a new book.
+ */
+let postBook = (req, res) => {
     let book = req.body;
-    Book.save(book,(err,newBook) =>{
-        
+    Book.save(book, (err, newBook) => {
         if(err) {
             res.send(err);
             return;
         }
-            res.send({
-                massage:'Book success added',
-                Book:newBook
-            });
-    });
-}
-   
-
-
-
-/** GET BY Id */
-const getBook = (req,res) =>{
-    Book.findById(req.params.id, (err,book) =>{
-        if(err){
-            res.send(err);
-            return;
-        }
-            res.send(book)
+        res.send({
+            message: "Book successfully added!",
+            book: newBook
+        });
     });
 };
-/**DELETE BY ID */
- const deleteBook = (req,res) =>{
-     Book.delete(req.params.id,(err,result) =>{
-         if(err){
-             res.send(err);
-             return;
-         }
-             res.send({
-                 massage:'Delete Success',
-                 result
-             })
-     })
- };
- /** UPDATE BOOK */
-const updateBook = (req,res) =>{
-    Book.update(req.params.id,req.body.id ,(err,book) =>{
-        if(err){
+
+/*
+ * GET /books/:id route to retrieve a book given its id.
+ */
+let getBook = (req, res) => {
+    Book.findById(req.params.id, (err, book) => {
+        if(err) {
             res.send(err);
             return;
         }
-            res.send({
-                massage:' Book change success',
-                book
-            })
+        res.send({
+            book
+        });
     })
 };
-module.exports ={
+
+/*
+ * DELETE /books/:id to delete a book given its id.
+ */
+let deleteBook = (req, res) => {
+    Book.delete(req.params.id, (err, result) => {
+        res.json({
+            message: "Book successfully deleted!",
+            result
+        });
+    })
+};
+
+/*
+ * PUT /books/:id to update a book given its id
+ */
+let updateBook = (req, res) => {
+    Book.update(req.params.id, req.body, (err, book) => {
+        if(err) {
+            res.send(err);
+            return;
+        }
+        res.send({
+            message: "Book updated!",
+            book
+        });
+    })
+};
+
+//export all the functions
+module.exports = {
     getBooks,
     postBook,
     getBook,
     deleteBook,
     updateBook
-}
+};
