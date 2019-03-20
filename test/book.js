@@ -7,10 +7,11 @@ let chai = require('chai');
 let chaiHttp = require('chai-http');
 let server = require('../server');
 let should = chai.should();
-
+//use should Compare the real value and the desired value
 chai.use(chaiHttp);
 
 describe('Books', () => {
+  // initialization API
   beforeEach((done) => {
     Book.remove({}, (err) => {
       done();
@@ -23,6 +24,7 @@ describe('Books', () => {
         .end((err, res) => {
           res.should.have.status(200);
           res.body.should.be.a('array');
+          // bookstore no exist book eql(0)
           res.body.length.should.be.eql(0);
           done();
         });
