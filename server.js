@@ -5,49 +5,18 @@ const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8080;
 const book = require('./app/routes/book');
-const config = require('config');// load db location from json files;
+const config = require('./config/dev.json');// load db location from json files;
 const mongoose = require('mongoose');
 
-
-// db option
-const options = { 
-    server: { socketOptions: { keepAlive: 1, connectTimeoutMS: 30000 } }, 
-    replset: { socketOptions: { keepAlive: 1, connectTimeoutMS : 30000 } } 
-  }; 
-var uri = "mongodb://localhost:27017/StoreBook"
-mongoose.connect('mongodb://localhost:27017/StoreBook', {useNewUrlParser: true});
-
-mongoose.connect(uri, { keepAlive: true, keepAliveInitialDelay: 300000 }, function(err){
-             console.log('Mongoose disconnected!!');
-});
-
-// )
+mongoose.connect(config.MONGO_URI, {useNewUrlParser: true});
 
 
-
-// const db = mongoose.connection;
-// db.on('error', console.error.bind(console, 'connection error:'));
-
-// //don't show the log when it is test
-// if(config.util.getEnv('NODE_ENV') !== 'test') {
-// 	//use morgan to log at command line
-// 	app.use(morgan('combined')); //'combined' outputs the Apache style LOGs
-// }
-// mongoose.Promise = global.Promise;
-// mongoose.connect(process.env.MONGODB_URI, err => {
-//     if(err) 
-//         console.log(err);
-//     } 
-// );
-
-
-
-
-
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: true}));
+// if(config.util.getEnv('NODE_ENV') !== 'test') { app.use(morgan('combined')); });
+// app.use(bodyParser.json());
+app.use(bodyParser.urlencoded( {extended: true} ));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json'}));
+app.use('/coverage', express.static('coverage'));
 
 app.get("/", (req, res) => res.json({message: "Welcome to our Bookstore!"}));
 

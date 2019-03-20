@@ -17,10 +17,11 @@
     "chai": "^4.2.0",
     "chai-http": "^4.2.1",
     "coveralls": "^3.0.3",
-    "mocha": "^6.0.2"
+    "mocha": "^6.0.2",
+    "nyc": "^13.3.0"
   },
   "scripts": {
-    "test": "mocha --timeout 10000",
+    "test": "nyc report --reporter=html  mocha",
     "start": "nodemon server.js"
   },
   "author": "VanVan",
