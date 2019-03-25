@@ -22,7 +22,7 @@
     "nyc": "^13.3.0"
   },
   "scripts": {
-    "test": "nyc report --reporter=html  mocha",
+    "test": "nyc mocha",
     "start": "nodemon server.js"
   },
   "author": "VanVan",
