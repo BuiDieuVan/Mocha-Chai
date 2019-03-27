@@ -4,7 +4,7 @@ const app = express();
 const morgan = require('morgan');
 const bodyParser = require('body-parser');
 const port = process.env.PORT || 8080;
-const book = require('./app/routes/book');
+const book = require('./app/routes/book.controller');
 const config = require('./config/dev.json');// load db location from json files;
 const mongoose = require('mongoose');
 
@@ -17,6 +17,7 @@ app.use(bodyParser.urlencoded( {extended: true} ));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: 'application/json'}));
 app.use('/coverage', express.static('coverage'));
+app.use('/apidoc', express.static('build'));
 
 app.get("/", (req, res) => res.json({message: "Welcome to our Bookstore!"}));
 

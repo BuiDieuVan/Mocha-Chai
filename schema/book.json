@@ -1,0 +1,40 @@
+{
+    "required": ["title", "author", "year"],
+    "properties": {
+        "title": { 
+            "type": "String",
+            "required":true
+        },
+        "author": { 
+            "type": "String",
+            "required":true
+        },
+        "userBookingId": { 
+            "type": "string" 
+        },
+        "year": { 
+            "type": "Number"
+        },
+        "pages":{
+            "types":"Number",
+            "required":true,
+            "minimum":1
+
+        }
+    },
+    "errorMessage": {
+        "type": "should be an object",
+        "required": {
+            "title": "title not blank",
+            "author": "author not blank",
+            "userBookingId": "userBookingId not blank",
+            "year": "Devision Team not blank"
+        },
+        "properties": {
+            "title": "title not blank",
+            "author":"author not blank",
+            "userBookingId":"userBookingId not blank",
+            "year":"Devision Team not blank"
+        }
+    }
+}
