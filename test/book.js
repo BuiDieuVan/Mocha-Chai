@@ -1,7 +1,7 @@
 process.env.NODE_ENV = 'test';
 
 let mongoose = require("mongoose");
-let Book = require('../app/models/book');
+let Book = require('../app/models/book.models');
 
 let chai = require('chai');
 let chaiHttp = require('chai-http');

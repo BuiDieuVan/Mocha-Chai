@@ -155,6 +155,11 @@ define({ "api": [
           "title": "Error-Response: HTTP/1.1 403 ",
           "content": "  {\n   \"code\": \"FORBIDDEN\",\n   \"name\": \"Forbidden\",\n   \"message\": \"You don't have permission to access this resource.\"\n}",
           "type": "json"
+        },
+        {
+          "title": "Error- Response: HTTP/1.1 401",
+          "content": "{\n   \"code\": \"UNAUTHORIZED_ERROR\",\n   \"name\": \"credentials_required\",\n   \"message\": \"No authorization token was found\"\n}",
+          "type": "JSON"
         }
       ]
     },

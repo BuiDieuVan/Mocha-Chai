@@ -16,3 +16,12 @@ why: nhờ đó biết đoạn code nào đó quên chưa test
 // CHAI
 -BDD/TDD assertion libr
 expect & should
+//gulp:https://techblog.vn/tim-hieu-ve-gulpjs
+
+// admin 
+1,quản lý sách 
+2.quản lý khách thuê truyện 
+3. quản lý hóa đơn
+4. thống kê đơn
+5. thống kê truyện tồn kho
+
