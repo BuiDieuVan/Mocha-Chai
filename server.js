@@ -7,6 +7,7 @@ const port = process.env.PORT || 8080;
 const book = require('./app/routes/book.controller');
 const config = require('./config/dev.json');// load db location from json files;
 const mongoose = require('mongoose');
+const userCtrl = require('./app/routes/user.controller')
 
 mongoose.connect(config.MONGO_URI, {useNewUrlParser: true});
 
@@ -19,6 +20,7 @@ app.use(bodyParser.json({ type: 'application/json'}));
 app.use('/coverage', express.static('coverage'));
 app.use('/apidoc', express.static('build'));
 
+
 app.get("/", (req, res) => res.json({message: "Welcome to our Bookstore!"}));
 
 app.route("/book")
@@ -28,6 +30,9 @@ app.route("/book/:id")
     .get(book.getBook)
     .delete(book.deleteBook)
     .put(book.updateBook);
+
+app.post('/register',userCtrl.register);
+app.post('/login',userCtrl.login)
 
 app.listen(port);
 console.log("Listening on port " + port);
